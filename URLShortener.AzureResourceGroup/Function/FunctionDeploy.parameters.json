@@ -52,6 +52,9 @@
     },
     "SQLInitialCatalog": {
       "value": "URLShortener"
+    },
+    "AppInsights_InstrumentationKey": {
+      "value": "4a5b2558-c319-40dc-bd1a-a53319baddfa"
     }
   }
 }
