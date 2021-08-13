@@ -1,0 +1,160 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "subscriptionId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "hostingPlanName": {
+      "type": "string"
+    },
+    "serverFarmResourceGroup": {
+      "type": "string"
+    },
+    "alwaysOn": {
+      "type": "bool"
+    },
+    "storageAccountName": {
+      "type": "string"
+    },
+    "use32BitWorkerProcess": {
+      "type": "bool"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "skuCode": {
+      "type": "string"
+    },
+    "workerSize": {
+      "type": "string"
+    },
+    "workerSizeId": {
+      "type": "string"
+    },
+    "numberOfWorkers": {
+      "type": "string"
+    },
+    // SQL Settings
+    "SQLDataSource": {
+      "type": "string"
+    },
+    "SQLUserID": {
+      "type": "string"
+    },
+    "SQLPassword": {
+      "type": "string"
+    },
+    "SQLInitialCatalog": {
+      "type": "string"
+    },
+    // ApplicationInsights
+    "AppInsights_InstrumentationKey": {
+      "type": "string"
+    }
+  },
+    "resources": [
+        {
+            "apiVersion": "2018-11-01",
+            "name": "[parameters('name')]",
+            "type": "Microsoft.Web/sites",
+            "kind": "functionapp",
+            "location": "[parameters('location')]",
+            "tags": {},
+            "dependsOn": [
+                "microsoft.insights/components/PaulMorris-URLShortenerAPI",
+                "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
+            ],
+            "properties": {
+                "name": "[parameters('name')]",
+                "siteConfig": {
+                  "appSettings": [
+                    {
+                      "name": "FUNCTIONS_EXTENSION_VERSION",
+                      "value": "~3"
+                    },
+                    {
+                      "name": "FUNCTIONS_WORKER_RUNTIME",
+                      "value": "dotnet"
+                    },
+                    {
+                      "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                      "value": "[reference('microsoft.insights/components/PaulMorris-URLShortenerAPI', '2015-05-01').InstrumentationKey]"
+                    },
+                    {
+                      "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+                      "value": "[reference('microsoft.insights/components/PaulMorris-URLShortenerAPI', '2015-05-01').ConnectionString]"
+                    },
+                    {
+                      "name": "AzureWebJobsSecretStorageType",
+                      "value": "files"
+                    },
+                    {
+                      "name": "SQLDataSource",
+                      "value": "paulmorris-urlshortener.database.windows.net"
+                    },
+                    {
+                      "name": "SQLUserID",
+                      "value": "paulmorris"
+                    },
+                    {
+                      "name": "SQLPassword",
+                      "value": "P8ssword#1234"
+                    },
+                    {
+                      "name": "SQLInitialCatalog",
+                      "value": "URLShortener"
+                    },
+                    {
+                      "name": "AppInsights_InstrumentationKey",
+                      "value": "4a5b2558-c319-40dc-bd1a-a53319baddfa"
+                    }
+                  ],
+                    "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]"
+                },
+                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "clientAffinityEnabled": false
+            }
+        },
+        {
+            "apiVersion": "2018-11-01",
+            "name": "[parameters('hostingPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('location')]",
+            "kind": "",
+            "tags": {},
+            "dependsOn": [],
+            "properties": {
+                "name": "[parameters('hostingPlanName')]",
+                "workerSize": "[parameters('workerSize')]",
+                "workerSizeId": "[parameters('workerSizeId')]",
+                "numberOfWorkers": "[parameters('numberOfWorkers')]"
+            },
+            "sku": {
+                "Tier": "[parameters('sku')]",
+                "Name": "[parameters('skuCode')]"
+            }
+        },
+        {
+            "apiVersion": "2020-02-02-preview",
+            "name": "PaulMorris-URLShortenerAPI",
+            "type": "microsoft.insights/components",
+            "location": "eastus",
+            "tags": {},
+            "dependsOn": [],
+            "properties": {
+                "ApplicationId": "[parameters('name')]",
+                "Request_Source": "IbizaWebAppExtensionCreate",
+                "Flow_Type": "Redfield",
+                "Application_Type": "web",
+                "WorkspaceResourceId": "/subscriptions/83f30ea7-af6d-45ec-a5df-737a2e1c425e/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-83f30ea7-af6d-45ec-a5df-737a2e1c425e-eus"
+            }
+        }
+    ]
+}

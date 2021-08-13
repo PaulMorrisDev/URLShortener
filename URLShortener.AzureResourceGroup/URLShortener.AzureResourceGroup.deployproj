@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>b68c3048-9cd5-4729-b2b3-5dca4507b1c5</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PrepareForBuildDependsOn>
+    </PrepareForBuildDependsOn>
+  </PropertyGroup>
+  <Import Condition=" Exists('Deployment.targets') " Project="Deployment.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- vertag<:>start tokens<:>maj.min -->
+  <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
+  <!-- vertag<:>end -->
+  <ItemGroup>
+    <None Include="APIM\APIMDeploy.parameters.json" />
+    <None Include="APIM\APIMDeploy.json" />
+    <None Include="ApplicationInsights\AppInsights.parameters.json" />
+    <None Include="ApplicationInsights\AppInsights.json" />
+    <None Include="Deployment.targets">
+      <Visible>False</Visible>
+    </None>
+    <Content Include="APIM\Deploy-APIM.ps1" />
+    <Content Include="ApplicationInsights\Deploy-AppInsights.ps1" />
+    <Content Include="Deploy-AzureResourceGroup.ps1" />
+    <Content Include="Function\Deploy-URLShortenerFunctionApp.ps1" />
+    <Content Include="SQLDatabase\Deploy-URLShortenerSQLDatabase.ps1" />
+    <Content Include="SQLDatabase\URLShortenerSQLDatabase.json" />
+    <Content Include="SQLDatabase\URLShortenerSQLDatabase.parameters.json" />
+    <None Include="Function\FunctionDeploy.parameters.json" />
+    <None Include="Function\FunctionDeploy.json" />
+    <None Include="SQLDatabase\Scripts\StoredProcedures\InsertShortURLID.sql" />
+    <None Include="SQLDatabase\Scripts\StoredProcedures\GetLongURL.sql" />
+    <None Include="SQLDatabase\Scripts\Tables\CreateURLsTable.sql" />
+  </ItemGroup>
+  <Target Name="GetReferenceAssemblyPaths" />
+</Project>

@@ -1,0 +1,57 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "subscriptionId": {
+      "value": "83f30ea7-af6d-45ec-a5df-737a2e1c425e"
+    },
+    "name": {
+      "value": "PaulMorris-URLShortenerAPI"
+    },
+    "location": {
+      "value": "East US"
+    },
+    "hostingPlanName": {
+      "value": "ASP-URLShortener-8530"
+    },
+    "serverFarmResourceGroup": {
+      "value": "URLShortener"
+    },
+    "alwaysOn": {
+      "value": false
+    },
+    "storageAccountName": {
+      "value": "storageaccounturlsh9ac8"
+    },
+    "sku": {
+      "value": "Dynamic"
+    },
+    "skuCode": {
+      "value": "Y1"
+    },
+    "workerSize": {
+      "value": "0"
+    },
+    "workerSizeId": {
+      "value": "0"
+    },
+    "numberOfWorkers": {
+      "value": "1"
+    },
+    "use32BitWorkerProcess": {
+      "value": true
+    },
+    "SQLDataSource": {
+      "value": "paulmorris-urlshortener.database.windows.net"
+    },
+    "SQLUserID": {
+      "value": "paulmorris"
+    },
+    "SQLPassword": {
+      "value": "P8ssword#1234"
+    },
+    "SQLInitialCatalog": {
+      "value": "URLShortener"
+    }
+  }
+}

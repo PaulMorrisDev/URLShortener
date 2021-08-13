@@ -1,0 +1,71 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "apimName": {
+            "value": "APIM-URLShortener"
+        },
+        "organizationName": {
+            "value": "PaulMorrisDev"
+        },
+        "adminEmail": {
+            "value": "paulmorrisdev@gmail.com"
+        },
+        "tier": {
+            "value": "Developer"
+        },
+        "appInsightsOption": {
+            "value": true
+        },
+        "appInsightsObject": {
+            "value": {
+                "name": "AI-URLShortener",
+                "id": "/subscriptions/83f30ea7-af6d-45ec-a5df-737a2e1c425e/resourceGroups/URLShortener/providers/microsoft.insights/components/AI-URLShortener"
+            }
+        },
+        "capacity": {
+            "value": ""
+        },
+        "identity": {
+            "value": {
+                "type": "None"
+            }
+        },
+        "virtualNetworkType": {
+            "value": "None"
+        },
+        "vnet": {
+            "value": {}
+        },
+        "tripleDES": {
+            "value": false
+        },
+        "http2": {
+            "value": false
+        },
+        "clientTls11": {
+            "value": false
+        },
+        "clientTls10": {
+            "value": false
+        },
+        "clientSsl30": {
+            "value": false
+        },
+        "backendTls11": {
+            "value": false
+        },
+        "backendTls10": {
+            "value": false
+        },
+        "backendSsl30": {
+            "value": false
+        },
+        "tagsByResource": {
+            "value": {}
+        }
+    }
+}

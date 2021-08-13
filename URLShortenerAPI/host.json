@@ -1,0 +1,11 @@
+{
+  "version": "2.0",
+  "ApplicationInsights": {
+    "InstrumentationKey": "4a5b2558-c319-40dc-bd1a-a53319baddfa"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  }
+}

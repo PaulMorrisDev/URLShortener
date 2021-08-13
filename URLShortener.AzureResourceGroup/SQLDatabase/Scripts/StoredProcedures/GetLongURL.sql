@@ -1,0 +1,24 @@
+﻿USE [URLShortener]
+GO
+
+/****** Object: Table [dbo].[URLs] Script Date: 13/08/2021 12:30:52 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[GetLongURL]
+	@shortURLID NVARCHAR(30) = NULL,
+	@longURL NVARCHAR(MAX) = NULL
+AS
+	IF @longURL != NULL
+	BEGIN
+		UPDATE URLs SET MonthlyRequests = MonthlyRequests + 1 WHERE LongURL = LOWER(@LongURL) 
+		
+		SELECT ShortURLId from URLs where LongURL = LOWER(@LongURL) FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
+	END
+	ELSE
+	BEGIN 
+		SELECT LongURL from URLs where ShortURLID = @shortURLID FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
+	END
