@@ -20,11 +20,6 @@ namespace URLShortenerAPI
             builder.Services.AddApplicationInsightsTelemetry(Environment.GetEnvironmentVariable("AppInsights_InstrumentationKey", EnvironmentVariableTarget.Process));
             builder.Services.AddTransient<ISQLHelper, SQLHelper>();
             builder.Services.AddTransient<IURLShortenerLogic, URLShortenerLogic>();
-
-            // If environment dependant and you wish to read from local.settings.json use below code
-            // Hack - Microsoft doesn't support dynamic logging injection by default, code below is a workaround
-            // var telemetryClient = new TelemetryClient(new TelemetryConfiguration(Environment.GetEnvironmentVariable("AppInsights_InstrumentationKey", EnvironmentVariableTarget.Process)));
-            // Telemetry client will then need to be injected in to all classes which require logging
         }
     }
 }

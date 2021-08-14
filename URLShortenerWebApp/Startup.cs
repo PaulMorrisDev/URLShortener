@@ -52,7 +52,7 @@ namespace URLShortenerWebApp
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=URLShortener}/{action=Index}/{id?}");
-
+                // Handle short url id in routing
                 endpoints.MapControllerRoute(name: "shortURL",
                             pattern: "/{*shortURLID}",
                             defaults: new { controller = "URLShortener", action = "Index" });

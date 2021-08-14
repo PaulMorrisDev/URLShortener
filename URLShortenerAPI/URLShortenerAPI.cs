@@ -4,6 +4,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 using URLShortenerAPI.Common;
 using URLShortenerAPI.Logic;
@@ -38,7 +39,7 @@ namespace URLShortenerAPI
             }
             catch (Exception ex)
             {
-                return ResponseHandler.CreateJSONResponse(ex);
+                return ResponseHandler.CreateJSONResponse(ex.Message, HttpStatusCode.InternalServerError);
             }
         }
 
@@ -62,7 +63,7 @@ namespace URLShortenerAPI
             }
             catch (Exception ex)
             {
-                return ResponseHandler.CreateJSONResponse(ex);
+                return ResponseHandler.CreateJSONResponse(ex.Message, HttpStatusCode.InternalServerError);
             }
         }
     }
