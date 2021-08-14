@@ -10,8 +10,8 @@ namespace URLShortenerWebApp.Controllers
         {
             if (!string.IsNullOrWhiteSpace(shortURLID))
             {
-                var fullURL = await URLShortenerService.GetFullURL(shortURLID);
-                return Redirect(fullURL.LongURL);
+                var response = await URLShortenerService.GetFullURL(shortURLID);
+                return Redirect(response.LongURL);
             }
 
             return View();

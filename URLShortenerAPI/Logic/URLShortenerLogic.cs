@@ -34,6 +34,11 @@ namespace URLShortenerAPI.Logic
             return response;
         }
 
+        /// <summary>
+        /// Call SQL Database to create a minified URL ID and return it as a response
+        /// </summary>
+        /// <param name="longURL"></param>
+        /// <returns>Minified URL ID</returns>
         public MinifiedURLResponse CreateMinifiedURL(string longURL)
         {
             var dbResponse = sqlHelper.GetData("InsertShortURLID", new Dictionary<string, string>() { { "LongURL", longURL } });
