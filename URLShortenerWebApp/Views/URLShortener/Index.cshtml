@@ -16,6 +16,10 @@
     {
     <p>Click to copy minified URL: <a href="#" onclick="CopyToClipboard('aMinifiedURL');event.preventDefault();" id="aMinifiedURL">@ViewBag.URL</a></p>
     }
+    @if(Convert.ToBoolean(ViewBag.Error))
+    {
+    <p>Looks like you've been given a dead link.</p>
+    }
 </div>
 <script>
     function CopyToClipboard(id) {

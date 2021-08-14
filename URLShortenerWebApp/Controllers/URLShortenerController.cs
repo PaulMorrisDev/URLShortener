@@ -11,9 +11,14 @@ namespace URLShortenerWebApp.Controllers
             if (!string.IsNullOrWhiteSpace(shortURLID))
             {
                 var response = await URLShortenerService.GetFullURL(shortURLID);
+                string longURL = response.LongURL;
+                if (string.IsNullOrWhiteSpace(longURL))
+                {
+                    ViewBag.Error = true;
+                    return View();
+                }
                 return Redirect(response.LongURL);
             }
-
             return View();
         }
 
