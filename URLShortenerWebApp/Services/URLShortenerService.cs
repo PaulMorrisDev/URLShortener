@@ -17,7 +17,7 @@ namespace URLShortenerWebApp.Services
             string apiResponse = string.Empty;
             try
             {
-                longURL = HttpUtility.UrlEncode(longURL);
+                //longURL = HttpUtility.UrlEncode(longURL);
                 var httpContent = new StringContent(JsonConvert.SerializeObject(new MinifiedURLRequest() { LongURL = longURL }));
                 client.DefaultRequestHeaders.Add("ocp-apim-subscription-key", "f2d3f534dce045ecbb6c093df90203d0");
 
@@ -52,7 +52,7 @@ namespace URLShortenerWebApp.Services
                     apiResponse = await response.Content.ReadAsStringAsync();
                 }
                 responseObj = JsonConvert.DeserializeObject<MinifiedURLResponse>(apiResponse);
-                responseObj.LongURL = HttpUtility.UrlDecode(responseObj.LongURL);
+                //responseObj.LongURL = HttpUtility.UrlDecode(responseObj.LongURL);
                 return responseObj;
             }
             catch (Exception ex)

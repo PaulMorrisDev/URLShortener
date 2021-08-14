@@ -17,6 +17,7 @@ namespace URLShortenerAPI.DataAccess
         /// Generic call Stored Procedure call to SQL Database
         /// Could be decoupled into own DLL if need be
         /// String Builder Parameters could be method parameters
+        /// Stored procedure is always expected to return JSON response
         /// </summary>
         /// <param name="storedProcedure"></param>
         /// <param name="parameters"></param>

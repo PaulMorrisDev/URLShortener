@@ -19,7 +19,13 @@ namespace URLShortenerAPI
         {
             urlShortenerLogic = _urlShortenerLogic;
         }
-
+        /// <summary>
+        /// Method for retrieving Long URL
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="shortURL"></param>
+        /// <param name="log"></param>
+        /// <returns></returns>
         [FunctionName("GetLongURL")]
         public async Task<IActionResult> GetLongURL(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "{shortURL}")] HttpRequest req, string shortURL,
