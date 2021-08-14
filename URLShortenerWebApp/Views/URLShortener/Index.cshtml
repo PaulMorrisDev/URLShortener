@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>Hello from our View Template!</p>
+
+<form method="post" asp-controller="URLShortener" asp-action="Submit">
+    <p>
+        URL: <input type="text" name="longURL" />
+        <input type="submit"  />
+    </p>
+</form>
