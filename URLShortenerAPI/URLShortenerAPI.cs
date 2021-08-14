@@ -42,6 +42,12 @@ namespace URLShortenerAPI
             }
         }
 
+        /// <summary>
+        /// Method for creating Short URL ID and storing in SQL Database
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="log"></param>
+        /// <returns>Short URL ID</returns>
         [FunctionName("CreateMinifiedURL")]
         public async Task<IActionResult> CreateMinifiedURL(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
