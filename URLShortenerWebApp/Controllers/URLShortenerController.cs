@@ -18,11 +18,11 @@ namespace URLShortenerWebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<string> Submit(string longURL)
+        public async Task<IActionResult> Submit(string longURL)
         {
             var response = await URLShortenerService.CreateMinifiedURLID(longURL);
-            return response.ShortURLId;
-
+            ViewBag.url = Request.Host + "/" + response.ShortURLId;
+            return View("Index");
         }
     }
 }

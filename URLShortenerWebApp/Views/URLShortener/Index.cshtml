@@ -2,13 +2,29 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>URL Minifier</h2>
 
-<p>Hello from our View Template!</p>
-
-<form method="post" asp-controller="URLShortener" asp-action="Submit">
-    <p>
-        URL: <input type="text" name="longURL" />
-        <input type="submit"  />
-    </p>
-</form>
+<p>Welcome to the URL minifier website!</p>
+<div class="container center_div">
+    <form method="post" asp-controller="URLShortener" asp-action="Submit">
+        <p>
+            URL: <input type="url" name="longURL" pattern="https?://.+" required />
+            <input type="submit" />
+        </p>
+    </form>
+    @if(!string.IsNullOrEmpty(ViewBag.URL))
+    {
+    <p>Click to copy minified URL: <a href="#" onclick="CopyToClipboard('aMinifiedURL');event.preventDefault();" id="aMinifiedURL">@ViewBag.URL</a></p>
+    }
+</div>
+<script>
+    function CopyToClipboard(id) {
+        var r = document.createRange();
+        r.selectNode(document.getElementById(id));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(r);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        window.alert('Copied')
+    }
+</script>
