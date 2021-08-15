@@ -77,7 +77,7 @@ namespace URLShortenerAPI.DataAccess
             {
                 timer.Stop();
                 // Log event details in application insights
-                telemetry.TrackEvent($"SQL Call to DataSource - {dataSource}, Database - {initialCatalog}, Stored Procedure - {storedProcedure}, UserID - {userID}, Success - {success}, Time - {timer}, Response - {sw.ToString()} ");
+                telemetry.TrackEvent($"SQL Call to DataSource - {dataSource}, Database - {initialCatalog}, Stored Procedure - {storedProcedure}, UserID - {userID}, Success - {success}, Time - {timer}, Response - {response} ");
             }
             return response;
         }

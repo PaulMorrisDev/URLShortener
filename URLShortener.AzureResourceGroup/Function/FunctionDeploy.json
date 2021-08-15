@@ -53,10 +53,6 @@
     },
     "SQLInitialCatalog": {
       "type": "string"
-    },
-    // ApplicationInsights
-    "AppInsights_InstrumentationKey": {
-      "type": "string"
     }
   },
     "resources": [
@@ -110,10 +106,6 @@
                     {
                       "name": "SQLInitialCatalog",
                       "value": "URLShortener"
-                    },
-                    {
-                      "name": "AppInsights_InstrumentationKey",
-                      "value": "4a5b2558-c319-40dc-bd1a-a53319baddfa"
                     }
                   ],
                     "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]"

@@ -17,7 +17,6 @@ namespace URLShortenerAPI
         /// <param name="builder"></param>
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            builder.Services.AddApplicationInsightsTelemetry(Environment.GetEnvironmentVariable("AppInsights_InstrumentationKey", EnvironmentVariableTarget.Process));
             builder.Services.AddTransient<ISQLHelper, SQLHelper>();
             builder.Services.AddTransient<IURLShortenerLogic, URLShortenerLogic>();
         }
