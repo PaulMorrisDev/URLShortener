@@ -49,6 +49,8 @@ namespace URLShortenerAPI.DataAccess
                     using (var cmd = new SqlCommand(storedProcedure, conn) { CommandType = CommandType.StoredProcedure })
                     {
                         conn.Open();
+
+                        // Add stored procedure parameters
                         foreach (var param in parameters)
                         {
                             cmd.Parameters.AddWithValue(param.Key, param.Value);

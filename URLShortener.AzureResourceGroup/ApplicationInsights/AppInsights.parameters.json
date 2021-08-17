@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "type": {
-            "value": "web"
+            "value": "general"
         },
         "name": {
             "value": "AI-URLShortener"

@@ -13,6 +13,9 @@ namespace URLShortener.Test
         public readonly URLShortenerAPI.URLShortenerAPI urlShortenerFunc;
         public readonly ListLogger logger;
 
+        /// <summary>
+        /// Test settings constructor to emulate function app start up
+        /// </summary>
         public TestBase()
         {
             var envVariables = new Dictionary<string, string>()

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace URLShortener.Test
 {
+    /// <summary>
+    /// https://docs.microsoft.com/en-us/azure/azure-functions/functions-test-a-function
+    /// </summary>
     public class ListLogger : ILogger
     {
         public IList<string> Logs;
