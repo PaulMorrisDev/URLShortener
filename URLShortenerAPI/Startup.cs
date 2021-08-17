@@ -1,6 +1,5 @@
 ﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using URLShortenerAPI.DataAccess;
 using URLShortenerAPI.Logic;
 
