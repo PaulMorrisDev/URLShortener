@@ -29,7 +29,7 @@ namespace URLShortenerWebApp.Services
             {
                 var httpContent = new StringContent(JsonConvert.SerializeObject(new MinifiedURLRequest() { LongURL = longURL }));
 
-                //Retrieve this key from KeyVault
+                //Retrieve this key from KeyVault (set in parameters file)
                 client.DefaultRequestHeaders.Add("ocp-apim-subscription-key", aPIMSubscriptionKey);
 
                 HttpResponseMessage response = await client.PostAsync(new Uri($"{minifiedURLAPIMURL}CreateMinifiedURL"), httpContent);
@@ -59,7 +59,7 @@ namespace URLShortenerWebApp.Services
             string apiResponse = string.Empty;
             try
             {
-                //Retrieve this key from KeyVault
+                //Retrieve this key from KeyVault (set in parameters file)
                 client.DefaultRequestHeaders.Add("ocp-apim-subscription-key", aPIMSubscriptionKey);
                 HttpResponseMessage response = await client.GetAsync($"{minifiedURLAPIMURL}/{shortURLID}");
 
