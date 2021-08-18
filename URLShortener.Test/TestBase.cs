@@ -6,7 +6,10 @@ using URLShortenerAPI.Logic;
 
 namespace URLShortener.Test
 {
-    public class TestBase
+    /// <summary>
+    /// Test base abstract class as works as a common base class
+    /// </summary>
+    public abstract class TestBase
     {
         public readonly URLShortenerAPI.URLShortenerAPI urlShortenerFunc;
         public readonly ListLogger logger;
