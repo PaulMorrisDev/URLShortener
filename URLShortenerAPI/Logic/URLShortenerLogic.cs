@@ -26,7 +26,7 @@ namespace URLShortenerAPI.Logic
             var dbresponse = sqlHelper.GetData("GetLongURL", new Dictionary<string, string>() { { "ShortURLID", shortURL } });
 
             var response = JsonConvert.DeserializeObject<LongURLResponse>(dbresponse);
-            if (string.IsNullOrWhiteSpace(response.LongURL))
+            if (response == null)
             {
                 throw new ExceptionHandler(HttpStatusCode.NotFound, "No results found");
             }

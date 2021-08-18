@@ -38,9 +38,9 @@ namespace URLShortenerAPI
                 var response = ResponseHandler.CreateJSONResponse(urlShortenerLogic.GetLongURL(shortURL));
                 return await Task.FromResult(response);
             }
-            catch (Exception ex)
+            catch (ExceptionHandler ex)
             {
-                return ResponseHandler.CreateJSONResponse(ex.Message, HttpStatusCode.InternalServerError);
+                return ResponseHandler.CreateJSONResponse(ex.Message, ex.Data["StatusCode"] != null ? (HttpStatusCode)ex.Data["StatusCode"] : HttpStatusCode.InternalServerError);
             }
         }
 
@@ -64,7 +64,7 @@ namespace URLShortenerAPI
             }
             catch (Exception ex)
             {
-                return ResponseHandler.CreateJSONResponse(ex.Message, HttpStatusCode.InternalServerError);
+                return ResponseHandler.CreateJSONResponse(ex.Message, ex.Data["StatusCode"] != null ? (HttpStatusCode)ex.Data["StatusCode"] : HttpStatusCode.InternalServerError);
             }
         }
     }
