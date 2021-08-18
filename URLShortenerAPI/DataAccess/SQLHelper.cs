@@ -1,4 +1,5 @@
 ﻿using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +12,7 @@ namespace URLShortenerAPI.DataAccess
 {
     internal class SQLHelper : ISQLHelper
     {
-        private TelemetryClient telemetry = new TelemetryClient();
+        private TelemetryClient telemetry = new TelemetryClient(TelemetryConfiguration.Active);
 
         /// <summary>
         /// Generic call Stored Procedure call to SQL Database

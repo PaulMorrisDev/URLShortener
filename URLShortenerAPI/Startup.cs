@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using URLShortenerAPI.DataAccess;
 using URLShortenerAPI.Logic;
 
@@ -16,6 +17,7 @@ namespace URLShortenerAPI
         /// <param name="builder"></param>
         public override void Configure(IFunctionsHostBuilder builder)
         {
+            builder.Services.AddApplicationInsightsTelemetryWorkerService(Environment.GetEnvironmentVariable("APPINSIGHTS_INSTRUMENTATIONKEY", EnvironmentVariableTarget.Process));
             builder.Services.AddTransient<ISQLHelper, SQLHelper>();
             builder.Services.AddTransient<IURLShortenerLogic, URLShortenerLogic>();
         }
