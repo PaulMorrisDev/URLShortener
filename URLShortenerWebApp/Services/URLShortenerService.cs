@@ -13,7 +13,7 @@ namespace URLShortenerWebApp.Services
     public class URLShortenerService
     {
         private static HttpClient client = new HttpClient();
-        private static string minifiedURLAPIMURL = "https://apim-urlshortener.azure-api.net/paulmorris-urlshortenerapi/";
+        private static string minifiedURLAPIMURL = "http://localhost:7071/api/";
         private static string aPIMSubscriptionKey = "f2d3f534dce045ecbb6c093df90203d0";
 
         /// <summary>

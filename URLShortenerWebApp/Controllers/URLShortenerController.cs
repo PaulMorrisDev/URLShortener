@@ -26,7 +26,14 @@ namespace URLShortenerWebApp.Controllers
         public async Task<IActionResult> Submit(string longURL)
         {
             var response = await URLShortenerService.CreateMinifiedURLID(longURL);
-            ViewBag.url = Request.Host + "/" + response.ShortURLId;
+            if (response == null)
+            {
+                ViewBag.Error = true;
+            }
+            else
+            {
+                ViewBag.url = Request.Host + "/" + response.ShortURLId;
+            }
             return View("Index");
         }
     }
